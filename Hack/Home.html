@@ -15,12 +15,22 @@
     <div id="cocktails-container">
     </div>
 
+    <h1>Search for an Ingredient by Name</h1>
+    <form id="search-form">
+        <input type="text" id="ingredient-name" placeholder="Enter Ingredient name">
+        <button type="submit">Search</button>
+      </form>
+    
+      <div id="ingredient-container">
+      </div>
+
     <script>
       const form = document.querySelector('#search-form');
       const input = document.querySelector('#cocktail-name');
       const container = document.querySelector('#cocktails-container');
 
-      const baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+      const cocktailURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+      const ingredientURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -29,7 +39,7 @@
         const query = input.value.trim();
 
         // Construct the full API URL
-        const apiUrl = `${baseUrl}${query}`;
+        const apiUrl = `${cocktailURL}${query}`;
 
         // Use fetch to retrieve data from the API
         fetch(apiUrl)
@@ -59,6 +69,143 @@
           })
           .catch(error => console.error(error));
       });
+
+      form.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            // Get the value from the input field
+            const query = input.value.trim();
+    
+            // Construct the full API URL
+            const apiUrl = `${ingredientURL}${query}`;
+    
+            // Use fetch to retrieve data from the API
+            fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                container.innerHTML = '';
+    
+                // Check to ensure that results were returned
+                if (data.ingredient) {
+                  const ingredient = data.ingredient;
+    
+                  // Loop through each drink and display its name
+                  ingredient.forEach(ingredient => {
+                    const name = ingredient.strIngredient;
+                    const p = document.createElement('p');
+                    p.textContent = name;
+    
+                    container.appendChild(p);
+                  });
+    
+                } else {
+                  // If no results were returned, show an appropriate message to the user
+                  const p = document.createElement('p');
+                  p.textContent = 'No Ingredients found with that name.';
+                  container.appendChild(p);
+                }
+              })
+              .catch(error => console.error(error));
+          });
     </script>
   </body>
+
+  <!--
+    
+        <h2>Search for an Ingredient by Name</h2>
+        <form id="search-form">
+          <input type="text" id="ingredient-name" placeholder="Enter Ingredient name">
+          <button type="ingredientSubmit">Search</button>
+        </form>
+    
+        <div id="ingredient-container">
+        </div>
+    
+        <script>
+          const form = document.querySelector('#search-form');
+          const input = document.querySelector('#cocktail-name');
+          const container = document.querySelector('#cocktails-container');
+    
+          const cocktailURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+          const ingredientURL = 'www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+    
+          form.addEventListener('cocktailSubmit', (event) => {
+            event.preventDefault();
+    
+            // Get the value from the input field
+            const query = input.value.trim();
+    
+            // Construct the full API URL
+            const apiUrl = `${cocktailURL}${query}`;
+    
+            // Use fetch to retrieve data from the API
+            fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                container.innerHTML = '';
+    
+                // Check to ensure that results were returned
+                if (data.drinks) {
+                  const drinks = data.drinks;
+    
+                  // Loop through each drink and display its name
+                  drinks.forEach(drink => {
+                    const name = drink.strDrink;
+                    const p = document.createElement('p');
+                    p.textContent = name;
+    
+                    container.appendChild(p);
+                  });
+    
+                } else {
+                  // If no results were returned, show an appropriate message to the user
+                  const p = document.createElement('p');
+                  p.textContent = 'No cocktails found with that name.';
+                  container.appendChild(p);
+                }
+              })
+              .catch(error => console.error(error));
+          });
+
+          form.addEventListener('ingredientSubmit', (event) => {
+            event.preventDefault();
+    
+            // Get the value from the input field
+            const query = input.value.trim();
+    
+            // Construct the full API URL
+            const apiUrl = `${ingredientURL}${query}`;
+    
+            // Use fetch to retrieve data from the API
+            fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                container.innerHTML = '';
+    
+                // Check to ensure that results were returned
+                if (data.ingredient) {
+                  const ingredient = data.ingredient;
+    
+                  // Loop through each drink and display its name
+                  ingredient.forEach(ingredient => {
+                    const name = ingredient.strIngredient;
+                    const p = document.createElement('p');
+                    p.textContent = name;
+    
+                    container.appendChild(p);
+                  });
+    
+                } else {
+                  // If no results were returned, show an appropriate message to the user
+                  const p = document.createElement('p');
+                  p.textContent = 'No Ingredients found with that name.';
+                  container.appendChild(p);
+                }
+              })
+              .catch(error => console.error(error));
+          });
+        </script>
+  -->
 </html>
+
+
