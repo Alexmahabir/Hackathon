@@ -20,8 +20,6 @@
     <form id="search-form">
         <input type="text" id="ingredient-name" placeholder="Enter Ingredient name">
         <button type="submit">Search</button>
-        <button onclick="window.location.href = 'Seach.html';">Search by Cocktail Ingredient instead</button>
-
       </form>
     
       <div id="ingredient-container">
@@ -33,7 +31,6 @@
       const container = document.querySelector('#cocktails-container');
 
       const cocktailURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-      const ingredientURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -72,44 +69,6 @@
           })
           .catch(error => console.error(error));
       });
-
-      form.addEventListener('submit', (event) => {
-            event.preventDefault();
-    
-            // Get the value from the input field
-            const query = input.value.trim();
-    
-            // Construct the full API URL
-            const apiUrl = `${ingredientURL}${query}`;
-    
-            // Use fetch to retrieve data from the API
-            fetch(apiUrl)
-              .then(response => response.json())
-              .then(data => {
-                container.innerHTML = '';
-    
-                // Check to ensure that results were returned
-                if (data.ingredient) {
-                  const ingredient = data.ingredient;
-    
-                  // Loop through each drink and display its name
-                  ingredient.forEach(ingredient => {
-                    const name = ingredient.strIngredient;
-                    const p = document.createElement('p');
-                    p.textContent = name;
-    
-                    container.appendChild(p);
-                  });
-    
-                } else {
-                  // If no results were returned, show an appropriate message to the user
-                  const p = document.createElement('p');
-                  p.textContent = 'No Ingredients found with that name.';
-                  container.appendChild(p);
-                }
-              })
-              .catch(error => console.error(error));
-          });
     </script>
   </body>
 
