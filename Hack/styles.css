@@ -4,9 +4,6 @@ body {
   margin: 0;
   padding: 0;
 }
-h1 {
-  text-align: center;
-}
 #search-form {
   text-align: center;
 }
@@ -38,7 +35,7 @@ p {
   border-radius: 5px;
 }
 
-h2{
+h1{
   margin: 5px;
   padding: 10px;
   margin-left: 20%;
