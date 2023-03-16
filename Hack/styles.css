@@ -37,3 +37,13 @@ p {
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
+h2{
+  margin: 5px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: antiquewhite;
+  text-align: center;
+  font-style: italic;
+}
