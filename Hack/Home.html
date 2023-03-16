@@ -7,23 +7,14 @@
   </head>
   <body>
     <h1>Search for a Cocktail by Name</h1>
+    <button onclick="window.location.href = 'Seach.html';">Search by Cocktail Ingredient instead</button>
     <form id="search-form">
       <input type="text" id="cocktail-name" placeholder="Enter cocktail name">
       <button type="submit">Search</button>
-
     </form>
 
     <div id="cocktails-container">
     </div>
-
-    <h1>Search for an Ingredient by Name</h1>
-    <form id="search-form">
-        <input type="text" id="ingredient-name" placeholder="Enter Ingredient name">
-        <button type="submit">Search</button>
-      </form>
-    
-      <div id="ingredient-container">
-      </div>
 
     <script>
       const form = document.querySelector('#search-form');
