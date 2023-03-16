@@ -1,16 +1,30 @@
 <!doctype html>
 <html>
+    <style>
+      h2 {
+        text-align: center;
+      }
+    </style>
     <head>
         <title>Cocktails DB</title>
     </head>
     <body>
-        <h1>Search for a Cocktail by Name</h1>
+        <h2>Search for a Cocktail by Name</h2>
         <form id="search-form">
           <input type="text" id="cocktail-name" placeholder="Enter cocktail name">
           <button type="submit">Search</button>
         </form>
     
         <div id="cocktails-container">
+        </div>
+
+        <h2>Search for an Ingredient by Name</h2>
+        <form id="search-form">
+          <input type="text" id="ingredient-name" placeholder="Enter Ingredient name">
+          <button type="submit">Search</button>
+        </form>
+    
+        <div id="ingredient-container">
         </div>
     
         <script>
